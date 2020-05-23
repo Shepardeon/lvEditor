@@ -65,9 +65,16 @@ public class NewProjectFrame extends JFrame {
         );
 
         this.btnNewProject.addActionListener(e -> {
-            p_parentFrame.SetProject(new Project(texFldProjectName.getText(), texFldProjectPath.getText()));
-            this.setVisible(false);
-            this.dispose();
+            if (!texFldProjectName.getText().isBlank() && !texFldProjectPath.getText().isBlank()) {
+                p_parentFrame.SetProject(new Project(texFldProjectName.getText(), texFldProjectPath.getText()));
+                p_parentFrame.CreateProject();
+                this.setVisible(false);
+                this.dispose();
+            }
+            else {
+                // TODO: Add some output for the user
+                System.out.println("WARN: Can't create project with empty name or just white spaces");
+            }
         });
 
         contentPane.setLayout(layout);
@@ -104,6 +111,7 @@ public class NewProjectFrame extends JFrame {
         }
 
         private void UpdatePath() {
+            // TODO: Change this logic so the path won't "reset"
             this.projectPath.setText(Project.DEFAULT_PATH + Project.GetNiceName(this.projectName.getText()));
         }
     }

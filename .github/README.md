@@ -5,7 +5,7 @@ An open source game editor for Löve2D using lua templates.
 Heh. I have to work on those!
 
 ## Contributing
-Please feel free to contact me on Discord (ShépardéonDev#5271) to learn how you can contribute.
+Please feel free to contact me on Discord (**ShépardéonDev#5271**) to learn how you can contribute.
 In the mean time, you can take a look at the [Contributing Guide](https://github.com/Shepardeon/lvEditor/blob/master/.github/CONTRIBUTING.md)
 
 ## Contributors

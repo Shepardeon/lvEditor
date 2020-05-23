@@ -3,6 +3,7 @@ package com.shep.editor;
 import com.shep.model.Project;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class ProjectFrame extends JFrame {
     // Main menu bar
@@ -48,5 +49,18 @@ public class ProjectFrame extends JFrame {
     public void SetProject(Project p_project) {
         this.workedProject = new Project(p_project);
         this.setTitle(Main.GetTitle() + " - " + workedProject.GetName());
+    }
+
+    /**
+     * Function that will create a new project on disk
+     */
+    public void CreateProject() {
+        try {
+            this.workedProject.CreateProject();
+        }
+        catch (IOException e) {
+            // TODO: Log this
+            e.printStackTrace();
+        }
     }
 }
