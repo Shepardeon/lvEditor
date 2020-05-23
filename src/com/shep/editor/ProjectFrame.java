@@ -19,7 +19,7 @@ public class ProjectFrame extends JFrame {
     }
 
     private void InitFrame() {
-        this.setTitle("lvEditor - v0.1.0");
+        this.setTitle(Main.GetTitle());
         this.setSize(1000, 600);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -47,6 +47,6 @@ public class ProjectFrame extends JFrame {
 
     public void SetProject(Project p_project) {
         this.workedProject = new Project(p_project);
-        this.setTitle("lvEditor - v0.1.0 - " + workedProject.GetName());
+        this.setTitle(Main.GetTitle() + " - " + workedProject.GetName());
     }
 }
