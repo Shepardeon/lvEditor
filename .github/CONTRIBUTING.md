@@ -12,11 +12,9 @@ To contribute to this project, I'll recommend you to use:
 ### Contributing to Code Base
  1. Fork the project
  2. Make all the code changes you see fit
- 3. **Write Unit Tests***
- 4. Open a PR stating/explaining all the changes you made
- 5. Feel free to ping me on Discord when you opened a PR :)
+ 3. Open a PR stating/explaining all the changes you made
+ 4. Feel free to ping me on Discord when you opened a PR :)
  
- *: Applies mainly for Java
  
 ### Opening an issue
  - Whenever possible use a provided template
