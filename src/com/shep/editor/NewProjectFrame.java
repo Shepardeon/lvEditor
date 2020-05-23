@@ -1,20 +1,21 @@
 package com.shep.editor;
 
+import com.shep.model.Project;
+
 import javax.swing.*;
-import java.awt.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class NewProjectFrame extends JFrame {
-    private final String DEFAULT_PATH = "C:\\Users\\";
-
     private JLabel lblProjectName;
     private JTextField texFldProjectName;
     private JLabel lblProjectPath;
     private JTextField texFldProjectPath;
     private JButton btnNewProject;
 
-    public NewProjectFrame() {
+    public NewProjectFrame(ProjectFrame p_parentFrame) {
         InitFrame();
-        InitContent();
+        InitContent(p_parentFrame);
     }
 
     private void InitFrame() {
@@ -26,29 +27,48 @@ public class NewProjectFrame extends JFrame {
         this.setVisible(true);
     }
 
-    private void InitContent() {
+    private void InitContent(ProjectFrame p_parentFrame) {
         JPanel contentPane = (JPanel) this.getContentPane();
         SpringLayout layout = new SpringLayout();
 
+        /* Main Layout */
+        //----------------------------------------------------------------------------------------------------------
         this.lblProjectName = new JLabel("Project Name");
-        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblProjectName, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
+        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblProjectName, 0,
+                                SpringLayout.HORIZONTAL_CENTER, contentPane);
         layout.putConstraint(SpringLayout.NORTH, lblProjectName, 20, SpringLayout.NORTH, contentPane);
 
-        this.texFldProjectName = new JTextField(15);
-        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, texFldProjectName, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
+        this.texFldProjectName = new JTextField(20);
+        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, texFldProjectName, 0,
+                                SpringLayout.HORIZONTAL_CENTER, contentPane);
         layout.putConstraint(SpringLayout.NORTH, texFldProjectName, 20, SpringLayout.NORTH, lblProjectName);
 
         this.lblProjectPath = new JLabel("Project Path");
-        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblProjectPath, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
+        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, lblProjectPath, 0,
+                                SpringLayout.HORIZONTAL_CENTER, contentPane);
         layout.putConstraint(SpringLayout.NORTH, lblProjectPath, 20, SpringLayout.NORTH, texFldProjectName);
 
-        this.texFldProjectPath = new JTextField(DEFAULT_PATH, 15);
-        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, texFldProjectPath, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
+        this.texFldProjectPath = new JTextField(Project.DEFAULT_PATH, 20);
+        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, texFldProjectPath, 0,
+                                SpringLayout.HORIZONTAL_CENTER, contentPane);
         layout.putConstraint(SpringLayout.NORTH, texFldProjectPath, 20, SpringLayout.NORTH, lblProjectPath);
 
         this.btnNewProject = new JButton("Create New Project");
-        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, btnNewProject, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
+        layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, btnNewProject, 0,
+                                SpringLayout.HORIZONTAL_CENTER, contentPane);
         layout.putConstraint(SpringLayout.NORTH, btnNewProject, 40, SpringLayout.NORTH, texFldProjectPath);
+
+        /* Main Logic */
+        //----------------------------------------------------------------------------------------------------------
+        this.texFldProjectName.getDocument().addDocumentListener(
+                new NewProjectDocumentListener(texFldProjectName, texFldProjectPath)
+        );
+
+        this.btnNewProject.addActionListener(e -> {
+            p_parentFrame.SetProject(new Project(texFldProjectName.getText(), texFldProjectPath.getText()));
+            this.setVisible(false);
+            this.dispose();
+        });
 
         contentPane.setLayout(layout);
         contentPane.add(lblProjectName);
@@ -56,5 +76,35 @@ public class NewProjectFrame extends JFrame {
         contentPane.add(lblProjectPath);
         contentPane.add(texFldProjectPath);
         contentPane.add(btnNewProject);
+    }
+
+    class NewProjectDocumentListener implements DocumentListener {
+
+        private JTextField projectName;
+        private JTextField projectPath;
+
+        NewProjectDocumentListener(JTextField p_projectName, JTextField p_projectPath) {
+            this.projectName = p_projectName;
+            this.projectPath = p_projectPath;
+        }
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            UpdatePath();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            UpdatePath();
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            UpdatePath();
+        }
+
+        private void UpdatePath() {
+            this.projectPath.setText(Project.DEFAULT_PATH + Project.GetNiceName(this.projectName.getText()));
+        }
     }
 }

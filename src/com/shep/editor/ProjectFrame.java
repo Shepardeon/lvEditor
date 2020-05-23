@@ -1,8 +1,8 @@
 package com.shep.editor;
 
+import com.shep.model.Project;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ProjectFrame extends JFrame {
     // Main menu bar
@@ -10,6 +10,8 @@ public class ProjectFrame extends JFrame {
     private JMenu menuFile;
     private JMenuItem fileNew;
     private JMenuItem fileOpen;
+
+    private Project workedProject;
 
     public ProjectFrame() {
         InitFrame();
@@ -31,7 +33,7 @@ public class ProjectFrame extends JFrame {
         this.menuFile.setMnemonic('f');
 
         this.fileNew = new JMenuItem("New Project");
-        this.fileNew.addActionListener(a -> new NewProjectFrame());
+        this.fileNew.addActionListener(a -> new NewProjectFrame(this));
         this.fileNew.setMnemonic('n');
         this.fileOpen = new JMenuItem("Open Project");
         this.fileOpen.setMnemonic('o');
@@ -41,5 +43,10 @@ public class ProjectFrame extends JFrame {
 
         this.menuBar.add(menuFile);
         this.setJMenuBar(menuBar);
+    }
+
+    public void SetProject(Project p_project) {
+        this.workedProject = new Project(p_project);
+        this.setTitle("lvEditor - v0.1.0 - " + workedProject.GetName());
     }
 }
