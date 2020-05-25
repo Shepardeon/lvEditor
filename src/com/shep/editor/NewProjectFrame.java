@@ -66,6 +66,7 @@ public class NewProjectFrame extends JFrame {
 
         this.btnNewProject.addActionListener(e -> {
             if (!texFldProjectName.getText().isBlank() && !texFldProjectPath.getText().isBlank()) {
+                // TODO: Change logic, we should set project only if project could be created
                 p_parentFrame.SetProject(new Project(texFldProjectName.getText(), texFldProjectPath.getText()));
                 p_parentFrame.CreateProject();
                 this.setVisible(false);
