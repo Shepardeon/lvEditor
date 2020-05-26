@@ -1,8 +1,10 @@
 package com.shep.editor;
 
 import com.shep.model.Project;
+import com.shep.service.LoveProcess;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class ProjectFrame extends JFrame {
@@ -12,11 +14,16 @@ public class ProjectFrame extends JFrame {
     private JMenuItem fileNew;
     private JMenuItem fileOpen;
 
+    // Main tool bar
+    private JToolBar toolBar;
+    private JButton runButton;
+
     private Project workedProject;
 
     public ProjectFrame() {
         InitFrame();
         InitMenu();
+        InitToolbar();
     }
 
     private void InitFrame() {
@@ -47,10 +54,26 @@ public class ProjectFrame extends JFrame {
         this.setJMenuBar(menuBar);
     }
 
+    private void InitToolbar() {
+        this.toolBar = new JToolBar();
+        this.toolBar.setFloatable(false);
+
+        this.runButton = new JButton("Run");
+        this.runButton.setEnabled(false);
+        this.runButton.setToolTipText("Open project first");
+        this.runButton.addActionListener(a -> new LoveProcess(workedProject.GetPath()).Start());
+
+        this.toolBar.add(runButton);
+        this.getContentPane().add(toolBar, BorderLayout.NORTH);
+    }
+
     public void SetProject(Project p_project) {
         //TODO: We'll probably want  save and close the previous project here
         this.workedProject = new Project(p_project);
         this.setTitle(Main.GetTitle() + " - " + workedProject.GetName());
+
+        this.runButton.setEnabled(true);
+        this.runButton.setToolTipText(null);
     }
 
     /**

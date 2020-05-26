@@ -46,6 +46,9 @@ public class Project {
     public String GetName() {
         return name;
     }
+    public String GetPath() {
+        return path;
+    }
 
     /**
      * Function replacing spaces with underscores
