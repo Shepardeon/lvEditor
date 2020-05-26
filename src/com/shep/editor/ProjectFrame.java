@@ -44,6 +44,7 @@ public class ProjectFrame extends JFrame {
         this.fileNew.addActionListener(a -> new NewProjectFrame(this));
         this.fileNew.setMnemonic('n');
         this.fileOpen = new JMenuItem("Open Project");
+        this.fileOpen.addActionListener(a -> new OpenProjectFrame(this));
         this.fileOpen.setMnemonic('o');
 
         this.menuFile.add(fileNew);
@@ -67,6 +68,7 @@ public class ProjectFrame extends JFrame {
     }
 
     public void SetProject(Project p_project) {
+        //TODO: We'll probably want  save and close the previous project here
         this.workedProject = new Project(p_project);
         this.setTitle(Main.GetTitle() + " - " + workedProject.GetName());
 

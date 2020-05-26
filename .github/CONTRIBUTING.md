@@ -19,21 +19,35 @@ To contribute to this project, I'll recommend you to use:
 ### Opening an issue
  - Whenever possible use a provided template
  - Give as much information and context as possible
-  
+
+
+### About branches
+ - **master**: This branch is considered "stable" and is permanent. Each push to this branch comes with a new release.
+ - **dev**: This is the default branch, it is considered "unstable" and is permanent. You should open PR to this branch.
+ - feat_***: This is a feature branch which you should open to temporarly work on a new feature.
+ - iss###: This is an issue branch which you should open to temporarly work on fixing an issue.
+
+Please, try to keep your branch name snake_case. Also, try to be gentle with your commit history.
+
 ## Code Formatting Guidelines
 Please, try to follow those guidelines as much as possible so your code "belongs".
 
 ### General
- - Variables should be camelCase
- - Class name should be PascalCase
- - Functions/methods' parameters should be led by `p_` [eg `p_myParameter`]
- - Provide informative comments to explain obscure code
+ - Variables should be camelCase.
+ - Class name should be PascalCase.
+ - Functions/methods' parameters should be led by `p_` [eg `p_myParameter`].
+ - Provide informative comments to explain obscure code.
  
 ### Java
- - Functions/methods should be PascalCase
- - Use the `this` keyword whenever possible
- - Member variables should be `private` or `protected` most of the time
+ - Functions/methods should be PascalCase.
+ - Use the `this` keyword whenever possible.
+ - Member variables should be `private` or `protected` most of the time.
+
+#### About packages
+ - **editor**: This package should contain only the UI-related (JFrame) classes.
+ - **model**: This package should contain all the classes that are used to represent a component such as a file or a directory.
+ - **service**: This package should contain all the classes that provide a service (eg. serializartion, logging, etc.).
  
 ### Lua
- - Functions/methods should be camelCase for consistency with Löve2D
- - Whenever applicable, variable should state type [eg `strName` or `p_numDamage`]
+ - Functions/methods should be camelCase for consistency with Löve2D.
+ - Whenever applicable, variable should state type [eg `strName` or `p_numDamage`].
