@@ -1,3 +1,5 @@
+require("lv.startup")
+
 function love.load()
 
 end
