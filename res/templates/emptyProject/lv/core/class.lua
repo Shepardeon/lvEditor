@@ -46,7 +46,7 @@ function Class:isType(p_strClassType)
     local base = self
 
     while base do
-        if base.type = p_strClassType then return true end
+        if base.type == p_strClassType then return true end
         base = base.super
     end
 
