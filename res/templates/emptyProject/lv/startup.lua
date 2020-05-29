@@ -11,3 +11,4 @@ debug.setmetatable(true, {__len = function(v) return v and 1 or 0 end})
 -- | MAIN MODULES |
 -- +--------------+
 Class = require("lv.core.class")
+Vector = require("lv.core.maths.vector")
