@@ -7,7 +7,14 @@
 lvEditor wants to be an open source game editor for Löve2D using lua templates. Ideally the project will grow into a fully usable game editor with script editing and a WYSIWYG level editor. The objective is to enable game developers to focus less on building systems but on actually building their games!
 
 ## Features
-Heh. I have to work on those!
+#### Library features
+- Basic class system
+- Keyboard/Mouse support
+- Gamepad support
+- Bindable input manager
+
+#### Editor features
+Work in progress...
 
 ## Contributing
 Please feel free to contact me on Discord (**ShépardéonDev#5271**) to learn how you can contribute.
