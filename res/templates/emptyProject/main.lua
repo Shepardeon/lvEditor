@@ -5,7 +5,7 @@ function love.load()
 end
 
 function love.update(dt)
-
+    Input:update()
 end
 
 function love.draw()
