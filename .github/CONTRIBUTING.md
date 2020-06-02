@@ -8,7 +8,10 @@ To contribute to this project, I'll recommend you to use:
  - [IntelliJ IDEA](https://www.jetbrains.com/fr-fr/idea/) to contribute to the editor.
  
 ## Workflow
- 
+
+### Contributing to the Wiki
+I'm not working on the Wiki for now and didn't really think about how I wanted it to look. So if you feel like you'd like to help here, please ping me on Discord so we can discuss this :)
+
 ### Contributing to Code Base
  1. Fork the project
  2. Make all the code changes you see fit
