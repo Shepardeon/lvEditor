@@ -41,7 +41,7 @@ end
 -- g_X => gamepad input
 -- a_X => gamepad axis input
 function InputManager:bind(p_strAction, p_tblInputs)
-    assert(type(p_strAction) == "string", "Action must be of type table, got "..type(p_strAction).." instead!")
+    assert(type(p_strAction) == "string", "Action must be of type string, got "..type(p_strAction).." instead!")
     assert(self.actions[p_strAction] == nil, "Action "..p_strAction.." is already a registred action!")
     assert(type(p_tblInputs) == "table", "Inputs must be of type table, got "..type(p_tblInputs).." instead!")
     self.actions[p_strAction] = p_tblInputs
@@ -49,13 +49,13 @@ end
 
 -- Allows to completely unbind an action
 function InputManager:unbind(p_strAction)
-    assert(type(p_strAction) == "string", "Action must be of type table, got "..type(p_strAction).." instead!")
+    assert(type(p_strAction) == "string", "Action must be of type string, got "..type(p_strAction).." instead!")
     self.actions[p_strAction] = nil
 end
 
 -- Allows to bind a single new input to an action
 function InputManager:bindAdd(p_strAction, p_strInput)
-    assert(type(p_strAction) == "string", "Action must be of type table, got "..type(p_strAction).." instead!")
+    assert(type(p_strAction) == "string", "Action must be of type string, got "..type(p_strAction).." instead!")
     assert(type(p_strInput) == "string", "Input must be of type table, got "..type(p_strInput).." instead!")
     assert(self.actions[p_strAction] ~= nil, "Action "..p_strAction.." isn't a registered action!")
 
@@ -64,7 +64,7 @@ end
 
 -- Allows to unbind a single input from an action
 function InputManager:bindRemove(p_strAction, p_strInput)
-    assert(type(p_strAction) == "string", "Action must be of type table, got "..type(p_strAction).." instead!")
+    assert(type(p_strAction) == "string", "Action must be of type string, got "..type(p_strAction).." instead!")
     assert(type(p_strInput) == "string", "Input must be of type table, got "..type(p_strInput).." instead!")
     assert(self.actions[p_strAction] ~= nil, "Action "..p_strAction.." isn't a registered action!")
 
