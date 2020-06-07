@@ -13,6 +13,7 @@ lvEditor wants to be an open source game editor for Löve2D using lua templates.
 - Gamepad support
 - Bindable input manager
 - Event manager
+- Camera system with layers
 
 #### Editor features
 Work in progress...
